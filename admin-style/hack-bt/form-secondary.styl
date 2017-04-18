@@ -1,0 +1,103 @@
+@require "../variables"
+@require "../mixins"
+@require "../../bootstrap-stylus/variables.styl"
+
+.form-secondary
+  $addonWidth = 182px
+  $control-padding = 6px 8px
+
+  width 60vw
+  margin 0 auto
+
+  // uneditable-form, just for show
+  &.uneditable
+    uneditable-style()
+      background-color #e6e6e6
+      color $black
+      border-width 0
+      box-shadow none
+      cursor not-allowed
+
+    .form-control
+      uneditable-style()
+
+    .btn
+      &-group
+        border-width 0
+        uneditable-style()
+
+      &.dropdown-toggle
+        uneditable-style()
+
+  form-control-padding-h()
+    padding-left  $size-unit
+    padding-right $size-unit
+    line-height 4 * $size-unit
+
+  .form-control
+    form-control-padding-h()
+
+  .input-group
+    width 100%
+    min-height 4 * $size-unit
+
+    &:not(:last-child)
+      margin-bottom $size-unit
+
+    &-addon
+      no-padding-v()
+      padding $control-padding
+      min-width $addonWidth
+      padding-top .4em
+      font-size: 14px
+      display: table-cell
+      background-color transparent
+      border-color transparent
+      color $color
+      line-height: 1.7
+      text-align left
+      vertical-align top
+      border-right 0
+      border 0
+      line-height 1.5
+
+      & + .form-control
+        // border-left 0
+        border-radius 0
+
+        &[type="checkbox"]
+          position relative
+          top -5px
+
+    // for v-select
+    .btn-group
+      height 100%
+
+      .dropdown
+        &-toggle
+          height 100%
+
+        &-menu
+          padding-top: $size-unit
+          padding-bottom: $size-unit
+          box-shadow: none
+          border-color: #c2c2c2
+
+          li
+            > a
+              padding-left $size-unit
+
+    // limit the max-width of .form-control and .control-hint-wrapper in input-group
+    $SmInputGroupWidth = 342px
+    $MdInputGroupWidth = 525px
+
+    /* in .input-gropu */
+    @media screen and (min-width $screen-sm-min)
+      max-width $addonWidth + $MdInputGroupWidth
+      margin-left auto
+      margin-right auto
+
+      input.form-control, .control-hint-wrapper
+        max-width $MdInputGroupWidth
+        &.short
+          max-width $SmInputGroupWidth

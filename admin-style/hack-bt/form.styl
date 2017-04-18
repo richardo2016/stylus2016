@@ -1,0 +1,144 @@
+@require "../variables"
+@require "../mixins"
+@require "../../bootstrap-stylus/variables.styl"
+
+/*
+ * Form Hacks
+ */
+textarea
+  &.form-control
+    height initial
+
+.form-control
+  &[disabled], &.disabled
+    background #eee
+    box-shadow none
+    // cursor not-allowed
+
+  &.tip-icon
+    background-color initial
+    background transparent
+    font-size $size-offset
+    line-height 1
+    padding: 0
+    vertical-align: middle
+    display: table-cell
+    box-shadow: none
+
+    & + .tip-text
+      position absolute
+      display none
+      transform easein
+      // TODO
+      back-opacity(black, .7)
+      color white
+      border-radius 2px
+      padding ($size-unit / 2)
+      font-size ($size-unit * 2)
+      &:hover
+        display block
+    &:hover + .tip-text
+        display block
+
+.tip-icon-wrapper
+  display table-cell
+  position initial
+
+.control-hint-wrapper
+  position relative
+  overflow hidden
+
+.input-group
+  &-addon
+    &.required:after
+      content: "*"
+      color: #ff5252
+      // custom it in the case
+      margin: $addon-required-space
+      position: relative
+      top: 0.1em
+
+  // pure text at the form-control position
+  .form-text
+    padding $size-unit
+
+  .form-disabled-input
+    padding 0 $size-unit
+    line-height: 4 * $size-unit
+
+    textarea + .error-hint
+      line-height 5 * $size-unit
+
+  // for txt-btn at the right of input.form-control
+  input.form-control
+    $input-box-height = 4 * $size-unit
+    &.control-right-space
+      position relative // relBase for the next .control-right-txt
+      padding-right 3.2 * $padding-lg // extra padding for the next .control-right-txt
+
+    & + .control-right-txt,
+    ../ .control-right-txt
+      height: 100%
+      display: table-cell
+      vertical-align: middle
+      z-index 4
+      position absolute
+      top: 0
+      right: $size-unit
+      line-height: $input-box-height
+      cursor pointer
+      text-decoration none
+
+    // control-width, with .control-hint-wrapper or .form-control
+    .sm-control
+      width: 342px
+
+    & , &.disabled, &[disabled]
+      background white
+
+    &.disabled, &[disabled]
+      color rgba(0, 0, 0, 0.4)
+      cursor default
+
+  // before-btn means one input(maybe with .from-control) is before one button and they
+  // are in one line, effective in all .input-group context
+  input.form-control, .control-hint-wrapper
+    // customize the $button-width and `$.before-btn`'s width property in the use case
+    $button-width = 100px
+    &.before-btn
+      display inline-block
+      width 'calc(100% - %s - 6px)' % $button-width
+      margin-right 6px
+
+      & + button, & + .action-btn
+        width $button-width
+        display inline-block
+        float right
+
+.error-hint
+  text-align left
+  padding-left $size-unit
+  padding-right $size-unit
+  display block
+  left 0
+  top 0
+  width 100%
+  height 100%
+  border 1px solid $red
+  form-control-padding-h()
+  line-height: 100%
+  z-index: $layer1
+  position: absolute
+
+  color #f15a5a
+  background #fff
+  opacity 1
+  cursor pointer
+
+  .error-flag, i[class^="material-icons"]
+    opacity 1
+    font-size 18px
+    position absolute
+    height 100%
+    line-height 4 * $size-unit
+    right $size-unit

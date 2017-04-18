@@ -1,0 +1,23 @@
+{
+  "name": "@richardo2016/stylus2016",
+  "version": "0.0.1-alpha",
+  "description": "richardo's stylus in 2016",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardo2016/stylus2016.git"
+  },
+  "keywords": [
+    "richardo2016",
+    "stylus"
+  ],
+  "author": "Chen Lei <richardo2016@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richardo2016/stylus2016/issues"
+  },
+  "homepage": "https://github.com/richardo2016/stylus2016#readme"
+}

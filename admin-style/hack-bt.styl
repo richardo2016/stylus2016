@@ -1,0 +1,36 @@
+// reference
+@require "./variables"
+@require "./mixins"
+@require "../bootstrap-stylus/variables.styl"
+
+// component hacks
+@require "./hack-bt/form"
+@require "./hack-bt/form-primary"
+@require "./hack-bt/form-secondary"
+
+/* date-picker start */
+.datepicker
+  color $black
+
+.date-picker
+  &-input.form-control
+    box-shadow: none
+/* datepicker end */
+
+/* dropdown start */
+.dropdown
+  &-menu
+    > li
+      > a
+        &:hover,
+        &:focus
+          background-color transparent
+          background-image none
+
+/* dropdown end */
+/* breadcrumb */
+.breadcrumb
+  background-color transparent
+/* breadcrumb end */
+
+

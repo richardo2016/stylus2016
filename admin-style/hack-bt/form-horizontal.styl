@@ -1,0 +1,100 @@
+@require "../variables"
+@require "../mixins"
+@require "../../bootstrap-stylus/variables.styl"
+
+.form-forth, .form-horizontal
+  .input-unit
+    display inline-block
+
+    & + .input-unit
+      margin-left ($size-offset / 2)
+
+    &-addon,
+    .control-hint-wrapper
+      cursor default
+      display table-cell
+      vertical-align middle
+
+    &-addon
+      padding 0 $size-unit
+      font-weight bold
+
+      & + .form-control, & + .control-hint-wrapper
+        border-left 0
+        &:focus
+          color $color
+        &[type="checkbox"]
+          position relative
+          top -5px
+
+      &.icon
+        width 1em
+
+    &-text
+      font-size 14px
+      line-height 2.4
+      padding 0 $size-unit
+      vertical-align middle
+      display inline-block
+
+  .form-control
+    position relative
+    font-size 14px
+    border-width 0
+    z-index 0
+    height 4 * $size-unit
+
+    &[type="checkbox"]
+      box-shadow none
+      height initial
+      width initial
+
+    > .icon
+      position absolute
+      left: 0
+      right: 0
+
+    .control-btn-wrapper
+      position: absolute
+      text-align: right
+      padding-right: 0.5em
+      right: 0
+      top: 0
+      width: 100%
+      height: 100%
+
+    // button after or before .form-control
+    .control-btn
+      cursor: pointer
+      position: relative
+      right: 0
+      width: 2em
+      box-sizing: content-box
+      margin: 0 auto
+      padding-right: 0 //.8em
+      text-align: center
+      &:hover
+        outline: 1px solid #000
+        box-shadow: 0 0px 3px inset
+
+      &-wrapper, &
+        height: 100%
+
+      > [class^="ion-"], [class="tt-icon-"]
+        display: block
+        line-height: 2.5em
+
+    &[disabled], &.disabled
+      span.form-control[type="text"]
+        background-color: transparent
+        box-shadow: none
+        cursor default
+
+    &.clean
+      background: transparent
+      box-shadow: none
+      padding 0
+
+    &.tip-icon
+      font-size $size-offset
+      line-height 1

@@ -1,0 +1,25 @@
+@require "../variables"
+@require "../mixins"
+@require "../../bootstrap-stylus/variables.styl"
+
+
+/* modal */
+[role="dialog"]
+  .modal-dialog, [role="document"]
+    // outline 1px solid black
+    display table
+    margin 0 auto
+    height 100%
+    padding 10% 0
+  .modal-content
+    margin 0 auto
+
+  .modal
+    &-footer
+      .btn
+        &-default
+          background $shadow-color
+          &:hover
+            background darken(#d6c7c7, 1.7)
+
+/* modal end */

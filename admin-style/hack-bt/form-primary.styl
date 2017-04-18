@@ -1,0 +1,100 @@
+@require "../variables"
+@require "../mixins"
+@require "../../bootstrap-stylus/variables.styl"
+
+.form-primary
+  .input-vertical-groups
+    .input-group
+      &:not(:first-child)
+        .input-group-addon , .form-control
+          border-top 0
+      &:first-child
+        .input-group-addon
+          border-bottom-right-radius 0
+          border-bottom-left-radius 0
+        .form-control
+          border-bottom-right-radius 0
+      &:last-child
+        .input-group-addon
+          border-top-right-radius 0
+          border-top-left-radius 0
+        .form-control
+          border-top-right-radius 0
+      &:not(:first-child):not(:last-child)
+        .input-group-addon , .form-control
+          border-radius 0
+
+  .input-group
+    &-addon
+      background-color transparent
+      color $color
+      border-right 0
+      border-color transparent //$border-color
+
+      & + .form-control
+        border-left 0
+        &:focus
+          color $color
+        &[type="checkbox"]
+          position relative
+          top -5px
+
+      &.icon
+        width 1em
+  .form-control
+    color $color
+    background-color #f2f2f2
+    border-color transparent
+    position relative
+    font-size 14px
+    z-index 0
+
+    &[type="checkbox"]
+      box-shadow none
+      height initial
+      width initial
+
+    > [class^="ion-"], [class="tt-icon-"]
+      position absolute
+      left: 0
+      right: 0
+
+    .control-btn-wrapper
+      position: absolute
+      text-align: right
+      padding-right: 0.5em
+      right: 0
+      top: 0
+      width: 100%
+      height: 100%
+
+    .control-btn
+      cursor: pointer
+      position: relative
+      right: 0
+      width: 2em
+      box-sizing: content-box
+      margin: 0 auto
+      padding-right: 0 //.8em
+      text-align: center
+      &:hover
+        outline: 1px solid #000
+        box-shadow: 0 0px 3px inset
+
+      &-wrapper, &
+        height: 100%
+
+      > [class^="ion-"], [class="tt-icon-"]
+        display: block
+        line-height: 2.5em
+
+    &[disabled], &.disabled
+      span.form-control[type="text"]
+        background-color: transparent
+        box-shadow: none
+        cursor default
+
+    &.clean
+      background: transparent
+      box-shadow: none
+      padding 0

@@ -1,0 +1,152 @@
+@require './variables'
+@require './mixins'
+
+.form-control
+  box-sizing border-box
+  &:focus
+    box-shadow: none
+
+.form-control, .input-group .form-control
+  border-radius 0
+
+button, .btn , [class^="btn-"]
+  outline 0
+  &:focus,
+  &:hover
+    outline 0
+
+  &.disabled, &[disabled]
+    cursor not-allowed
+    // &, &:hover, &:active, &:focus
+    //   color: #fff
+
+.btn
+  padding 7px 16px
+  height 32px
+  min-width 64px
+  border 0
+  border-radius 0
+
+  &-white
+    background-color transparent
+    color $color
+    &:hover
+      background-color $color
+      color $bg
+
+  &-black
+    $color = $white
+    $bg = $black
+    background-color $bg
+    color $color
+    &:hover
+      background-color lightness($bg)
+      color rgba($color, 0.3)
+
+  &-primary
+    background-color $primary-color
+    &:not(.disabled):not(.selected):hover
+      background-color $dark-primary-color
+      border-color $border-color
+
+    &[disabled], &.disabled, &.selected
+      color rgba(255, 255, 255, 0.54)
+      background-color  rgba(32, 150, 242, 0.32)
+
+  &-new
+    background-color white
+    color $primary-color
+    &:not(.disabled):not(.selected):hover
+      color $dark-primary-color
+
+    &[disabled], &.disabled, &.selected
+      background rgba(255, 255, 255, 0.32)
+      color rgba(33, 150, 243, 0.54)
+
+  &-cancel
+    background-color #bdbdbd
+    color white
+    &:not(.disabled):not(.selected):hover
+      background-color #6d6d6d
+      color white
+
+    &[disabled], &.disabled, &.selected
+      color rgba(255, 255, 255, 0.54)
+      background-color rgba(189, 189, 189, 0.32)
+
+  &-accent
+    background $accent-color
+    color white
+
+
+/* alert */
+[role="alert"].alert
+  border-radius 0
+  border-width 0
+
+  padding 10px
+  padding-left $size-offset
+
+  &-success
+    border-width 1px
+
+  &.top
+    top $headerHeightUnLogined
+
+  button.close
+    $close-size = 20px
+    $font-size = 14px
+    > span
+      width $close-size
+      height $close-size
+      display block
+      border 2px solid currentColor
+      border-radius 50%
+      box-sizing border-box
+      font-size $font-size
+      line-height $font-size
+      padding-left 1px
+      text-align center
+      font-weight bold
+
+.alert
+  &-danger
+    background-color #ffd1d1
+    color $accent-color
+
+  &-info
+    background-color #bbdefb
+    color $primary-color
+
+alert-style(type='info')
+  if type is 'info'
+    background-color #bbdefb
+    color $primary-color
+  else if type is 'danger'
+    background-color #ffd1d1
+    color $accent-color
+  else if type is 'warn'
+    background-color #ffd1d1
+    color $accent-color
+
+.modal
+  &-content
+    border-radius 0
+
+  &-header
+    padding ($size-offset - 4px) $size-offset
+    border-bottom 0
+
+  &-title
+    font-size 20px
+    line-height 1.5
+    font-weight normal
+
+  &-body
+    padding ($size-offset - 4px) $size-offset
+    padding-top 4px
+    padding-bottom 4px
+
+  &-footer
+    border-top 0
+    padding-bottom 16px
